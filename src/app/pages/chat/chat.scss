@@ -1,0 +1,29 @@
+.chat-container {
+  border: 1px solid #ccc;
+}
+
+.chat-sidebar {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.chat-messages {
+  height: 70vh;
+  overflow-y: auto;
+
+  .message {
+    margin: 0.75rem 0.75rem 0.75rem 0;
+  }
+}
+
+.new-message {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  left: 0;
+  padding: 12px;
+}
+
+.typing {
+  margin-left: 12px;
+}

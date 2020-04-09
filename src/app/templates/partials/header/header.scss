@@ -1,0 +1,6 @@
+@import '../../../../../node_modules/bulma/sass/utilities/initial-variables.sass';
+
+.header {
+  padding: ($block-spacing/2) $block-spacing;
+  margin-bottom: $block-spacing;
+}
