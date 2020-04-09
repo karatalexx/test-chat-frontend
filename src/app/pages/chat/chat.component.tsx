@@ -108,7 +108,7 @@ class ChatComponent extends Component<Props, State> {
    *
    * @param ev
    */
-  handleInputChange = (ev: ChangeEvent<HTMLTextAreaElement>): void => {
+  handleInputChange = (ev: ChangeEvent<HTMLInputElement>): void => {
     const { currentUser } = this.props;
     return this.setState(
       {
@@ -144,7 +144,7 @@ class ChatComponent extends Component<Props, State> {
         <div className="chat-container">
           <div className="columns">
             <aside className="column">
-              <nav className="panel chat-sidebar">
+              <nav className="chat-sidebar">
                 <p className="panel-heading">Users online ({chatUsers.length})</p>
                 {chatUsers.map((user) => {
                   return (
@@ -192,20 +192,19 @@ class ChatComponent extends Component<Props, State> {
                 <div className="columns is-vcentered">
                   <div className="column is-four-fifths">
                     <div className="control is-expanded">
-                      <textarea
+                      <input
                         name="message"
                         value={message}
-                        rows={1}
                         onChange={this.handleInputChange}
-                        className="textarea"
+                        className="input"
                       />
                     </div>
                   </div>
 
                   <div className="column">
                     <div className="control">
-                      <button className="button is-info is-fullwidth" onClick={this.handleSubmit}>
-                        Send message
+                      <button className="button is-info is-fullwidth" onClick={this.handleSubmit} disabled={!this.state.message}>
+                        Send
                       </button>
                     </div>
                   </div>

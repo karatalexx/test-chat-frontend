@@ -6,6 +6,7 @@ import { AppState } from '../../../store/root.reducer';
 import { GetCurrentUserRequestAction } from '../../../store/modules/user/user.actions';
 import { rootSelector } from '../../../store/selectors';
 import { LocalStorageService } from '../../../services/local-storage/local-storage.service';
+import './default-layout.component.scss';
 
 type Props = {
   children: ReactChild;
@@ -26,10 +27,13 @@ class DefaultLayoutComponent extends PureComponent<Props> {
     const { children } = this.props;
 
     return (
-      <div className="container is-fullhd">
+      <section className="section">
         <Header />
-        {children}
-      </div>
+        <div className="container">
+          <hr />
+          {children}
+        </div>
+      </section>
     );
   }
 }

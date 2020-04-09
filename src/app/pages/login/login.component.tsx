@@ -77,47 +77,65 @@ class LoginComponent extends Component<Props, State> {
     this.setState({ formErrors: errors });
   }
 
+  /**
+   * Check form fields is valid
+   */
+  isFormNotValid = (): boolean => {
+    const { password, email } = this.state;
+    if ([password, email].some((val) => !val.length)) return true;
+
+    return Object.values(this.state.formErrors).some((val) => val.length > 0);
+  };
+
   render() {
     const { email, password, formErrors } = this.state;
 
     return (
       <div>
         <h1 className="title is-h1">Login</h1>
-        <div className="field">
-          <label className="label">Email</label>
-          <div className="control">
-            <input
-              type="email"
-              name="email"
-              value={email}
-              className={clsx('input', { 'is-danger': formErrors.email.length > 0 })}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          {formErrors.email.length > 0 && <p className="help is-danger"> {formErrors.email}</p>}
-        </div>
+        <div className="columns">
+          <div className="column is-one-third">
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control">
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  className={clsx('input', { 'is-danger': formErrors.email.length > 0 })}
+                  onChange={this.handleInputChange}
+                />
+              </div>
+              {formErrors.email.length > 0 && <p className="help is-danger"> {formErrors.email}</p>}
+            </div>
 
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input
-              type="password"
-              name="password"
-              value={password}
-              className={clsx('input', { 'is-danger': formErrors.password.length > 0 })}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          {formErrors.password.length > 0 && (
-            <p className="help is-danger"> {formErrors.password}</p>
-          )}
-        </div>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  type="password"
+                  name="password"
+                  value={password}
+                  className={clsx('input', { 'is-danger': formErrors.password.length > 0 })}
+                  onChange={this.handleInputChange}
+                />
+              </div>
+              {formErrors.password.length > 0 && (
+                <p className="help is-danger"> {formErrors.password}</p>
+              )}
+            </div>
 
-        <div className="field is-grouped">
-          <div className="control">
-            <button className="button is-link" onClick={this.handleSubmit}>
-              Submit
-            </button>
+            <div className="field is-grouped">
+              <div className="control">
+                <button
+                  className="button is-link"
+                  onClick={this.handleSubmit}
+                  disabled={this.isFormNotValid()}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

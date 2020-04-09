@@ -21,16 +21,16 @@ class HeaderComponent extends PureComponent<Props> {
     const { currentUser } = this.props;
     return (
       <Fragment>
-        <button className="button is-primary">
-          <strong>{currentUser.username}</strong>
-        </button>
-
-        <button
-          className="button is-primary"
+        <div className="navbar-item is-size-5 has-text-weight-semibold">{currentUser.username}</div>
+        <Link to={'/chat'} className="navbar-item is-size-5 has-text-weight-semibold has-text-link">
+          Chat
+        </Link>
+        <a
           onClick={() => this.handleClickLogout(currentUser.id)}
+          className="navbar-item is-size-5 has-text-weight-semibold has-text-link"
         >
           <strong>Logout</strong>
-        </button>
+        </a>
       </Fragment>
     );
   };
@@ -38,11 +38,20 @@ class HeaderComponent extends PureComponent<Props> {
   guestMenu = () => {
     return (
       <Fragment>
-        <Link to={'/signup'} className="button is-primary">
+        <Link to={'/chat'} className="navbar-item is-size-5 has-text-weight-semibold has-text-link">
+          Chat
+        </Link>
+        <Link
+          to={'/signup'}
+          className="navbar-item is-size-5 has-text-weight-semibold has-text-link"
+        >
           <strong>Sign up</strong>
         </Link>
 
-        <Link to={'/login'} className="button is-light">
+        <Link
+          to={'/login'}
+          className="navbar-item is-size-5 has-text-weight-semibold has-text-link"
+        >
           <strong>Log in</strong>
         </Link>
       </Fragment>
@@ -53,24 +62,21 @@ class HeaderComponent extends PureComponent<Props> {
     const { currentUser } = this.props;
 
     return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <Link to={'/'} className="navbar-item">
-            <h4 className="title is-4">Test app</h4>
-          </Link>
-        </div>
-
-        <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-start">
-            <Link to={'/chat'} className="navbar-item">
-              Chat
+      <nav className="navbar">
+        <div className="container">
+          <div className="navbar-brand">
+            <Link to={'/'} className="navbar-item">
+              <h3 className="title is-3">Test app</h3>
             </Link>
-          </div>
 
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">{currentUser ? this.userMenu() : this.guestMenu()}</div>
-            </div>
+            <span className="navbar-burger burger" data-target="navbarMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenu" className="navbar-menu">
+            <div className="navbar-end">{currentUser ? this.userMenu() : this.guestMenu()}</div>
           </div>
         </div>
       </nav>

@@ -1,26 +1,50 @@
+//@import '../../../../node_modules/bulma/sass/utilities/initial-variables.sass';
+//@import '../../../../node_modules/bulma/sass/utilities/mixins';
+
+@import '~bulma/sass/utilities/initial-variables.sass';
+@import '~bulma/bulma.sass';
+
 .chat-container {
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
 }
 
 .chat-sidebar {
-  height: 80vh;
+  height: 75vh;
   overflow-y: auto;
+  border-right: 1px solid #ddd;
+
+  @include until($tablet) {
+    height: 25vh;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .panel-heading {
+    border-radius: 0;
+  }
 }
 
 .chat-messages {
-  height: 70vh;
+  height: 67vh;
   overflow-y: auto;
+
+  @include until($tablet) {
+    height: 50vh;
+  }
 
   .message {
     margin: 0.75rem 0.75rem 0.75rem 0;
+    padding: 0.4rem 0.75rem;
+    white-space: normal;
+    word-wrap: anywhere;
+    height: auto;
   }
 }
 
 .new-message {
   position: absolute;
   bottom: 1.5rem;
-  right: 1.5rem;
-  left: 0;
+  right: 2.5rem;
+  left: 0.75rem;
   padding: 12px;
 }
 
