@@ -1,2 +1,10 @@
-1. npm install
-2. npm run start
+#### Install node modules
+
+```
+npm install
+```
+
+#### Build and run app:
+```
+npm run start
+```
